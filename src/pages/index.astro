@@ -14,9 +14,12 @@ const posts = (await getCollection('blog', ({ data }) => {
     <h1 class="text-3xl font-mono font-bold mb-4 tracking-tight">
       <span class="text-amber-600 dark:text-amber-500">&gt;</span> Hello
     </h1>
-    <p class="text-neutral-600 dark:text-neutral-400 font-mono text-lg">
+    <p class="text-neutral-600 dark:text-neutral-400 font-mono text-lg mb-6">
       Senior Full Stack Engineer sharing thoughts on code and building things.
     </p>
+    <a href="/about" class="inline-flex items-center gap-2 text-sm font-mono px-4 py-2 bg-amber-600 text-white dark:bg-amber-500 dark:text-neutral-950 hover:bg-amber-700 dark:hover:bg-amber-400 transition-colors">
+      Learn more about me <span>-&gt;</span>
+    </a>
   </section>
 
   <section>
