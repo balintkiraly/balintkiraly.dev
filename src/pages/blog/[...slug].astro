@@ -1,0 +1,138 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return data.hidden !== true;
+  });
+  if (posts.length === 0) return [];
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+if (!post) return Astro.redirect('/');
+const { Content } = await post.render();
+
+const readingTime = Math.ceil(post.body.split(/\s+/).length / 200);
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
+const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article>
+    <header class="mb-10">
+      <a href="/" class="inline-flex items-center text-sm text-neutral-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-6">
+        &lt;- back
+      </a>
+      <h1 class="text-2xl font-bold mb-3">{post.data.title}</h1>
+      <div class="text-neutral-600 dark:text-neutral-500 text-sm flex flex-wrap gap-4 mb-4">
+        <span><span class="text-amber-600 dark:text-amber-500">#</span> {post.data.pubDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}</span>
+        <span><span class="text-amber-600 dark:text-amber-500">~</span> {readingTime} min read</span>
+      </div>
+      {post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {post.data.tags.map((tag) => (
+            <span class="text-xs font-mono px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="prose prose-neutral dark:prose-invert prose-neutral font-mono max-w-none 
+      prose-headings:font-bold
+      dark:prose-headings:text-neutral-200 prose-headings:text-neutral-900
+      prose-a:text-amber-600 dark:prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-500 dark:hover:prose-a:text-amber-300
+      prose-code:text-amber-600 dark:prose-code:text-amber-300 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+      dark:prose-pre:bg-neutral-900 prose-pre:bg-neutral-100 dark:prose-pre:border-amber-500/30 prose-pre:border-neutral-200 dark:prose:rounded-none prose-pre:rounded-none prose-pre:p-0 prose-pre:my-6
+      dark:prose-blockquote:border-l-amber-500 prose-blockquote:border-l-amber-600 dark:prose-blockquote:text-neutral-400 prose-blockquote:text-neutral-600
+      dark:prose-li:marker:text-amber-500 prose-li:marker:text-amber-600 dark:prose-li:text-neutral-300 prose-li:text-neutral-700
+      dark:prose-strong:text-neutral-200 prose-strong:text-neutral-800
+      dark:prose-p:text-neutral-300 prose-p:text-neutral-700
+      prose-pre:text-sm">
+      <Content />
+    </div>
+
+    <style is:global>
+      .dark .astro-code {
+        background-color: #0a0a0a !important;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        color: #e5e5e5;
+      }
+      
+      .astro-code {
+        background-color: #f5f5f5 !important;
+        border: 1px solid rgba(217, 119, 6, 0.2);
+        padding: 1.25rem !important;
+        border-radius: 0;
+        position: relative;
+        overflow-x: auto;
+        color: #1a1a1a;
+      }
+      
+      .dark .astro-code::before {
+        content: '> code';
+        display: block;
+        font-size: 0.7rem;
+        color: #fbbf24;
+        border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .astro-code::before {
+        content: '> code';
+        display: block;
+        font-size: 0.7rem;
+        color: #d97706;
+        border-bottom: 1px solid rgba(217, 119, 6, 0.3);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .astro-code code {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+
+      .astro-code code::before,
+      .astro-code code::after {
+        content: none !important;
+      }
+    </style>
+
+    {(prevPost || nextPost) && (
+      <nav class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+        <div class="grid md:grid-cols-2 gap-4">
+          {prevPost && (
+            <a href={`/blog/${prevPost.slug}`} class="group p-4 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500/50 transition-colors">
+              <span class="text-xs text-neutral-500">&lt;- prev</span>
+              <h3 class="text-sm font-semibold mt-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">{prevPost.data.title}</h3>
+            </a>
+          )}
+          {nextPost && (
+            <a href={`/blog/${nextPost.slug}`} class={`group p-4 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500/50 transition-colors ${!prevPost ? 'md:col-span-2' : 'md:col-start-2'}`}>
+              <span class="text-xs text-neutral-500">next -&gt;</span>
+              <h3 class="text-sm font-semibold mt-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">{nextPost.data.title}</h3>
+            </a>
+          )}
+        </div>
+      </nav>
+    )}
+  </article>
+</BaseLayout>

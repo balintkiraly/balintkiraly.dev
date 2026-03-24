@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => {
+  return data.hidden !== true;
+})).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="My Blog">
+  <section class="mb-16">
+    <h1 class="text-3xl font-mono font-bold mb-4 tracking-tight">
+      <span class="text-amber-600 dark:text-amber-500">&gt;</span> Hello
+    </h1>
+    <p class="text-neutral-600 dark:text-neutral-400 font-mono text-lg">
+      Senior Full Stack Engineer sharing thoughts on code and building things.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-6">
+      -- Latest Posts
+    </h2>
+    
+    {posts.length > 0 ? (
+      <ul class="space-y-3">
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}`} class="block group">
+              <article class="p-4 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500/50 hover:bg-amber-500/5 dark:hover:bg-amber-500/5 transition-all duration-150">
+                <div class="flex items-baseline justify-between gap-4 mb-2">
+                  <h2 class="text-lg font-mono font-semibold group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    {post.data.title}
+                  </h2>
+                  <time class="text-xs font-mono text-neutral-500 shrink-0">
+                    [{post.data.pubDate.toLocaleDateString('en-US', {
+                      year: '2-digit',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}]
+                  </time>
+                </div>
+                <p class="text-neutral-500 dark:text-neutral-500 font-mono text-sm mb-3">{post.data.description}</p>
+                {post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {post.data.tags.map((tag) => (
+                      <span class="text-xs font-mono px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="text-center py-12 border border-neutral-200 dark:border-neutral-800">
+        <p class="text-neutral-500 font-mono">No posts yet. Coming soon!</p>
+      </div>
+    )}
+  </section>
+</BaseLayout>
