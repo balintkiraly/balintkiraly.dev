@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/png" href="/favicon.png"><!-- Primary Meta Tags --><title>Are You Overcomplicating Your Personal Site? | balintkiraly</title><meta name="title" content="Are You Overcomplicating Your Personal Site? | balintkiraly"><meta name="description" content="Stop overcomplicating your personal site. Learn why static sites (and Astro in particular) are faster, simpler, and easier to host than Next.js + Vercel"><meta name="author" content="Bálint Király"><meta name="robots" content="index, follow"><link rel="canonical" href="https://balintkiraly.dev/blog/you-do-not-need-vercel-for-your-personal-site/"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://balintkiraly.dev/blog/you-do-not-need-vercel-for-your-personal-site/"><meta property="og:title" content="Are You Overcomplicating Your Personal Site? | balintkiraly"><meta property="og:description" content="Stop overcomplicating your personal site. Learn why static sites (and Astro in particular) are faster, simpler, and easier to host than Next.js + Vercel"><meta property="og:image" content="https://balintkiraly.dev/og-image.png"><meta property="og:site_name" content="balintkiraly"><meta property="article:published_time" content="2026-03-25T00:00:00.000Z"><meta property="article:author" content="Bálint Király"><!-- Twitter / X --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://balintkiraly.dev/blog/you-do-not-need-vercel-for-your-personal-site/"><meta name="twitter:title" content="Are You Overcomplicating Your Personal Site? | balintkiraly"><meta name="twitter:description" content="Stop overcomplicating your personal site. Learn why static sites (and Astro in particular) are faster, simpler, and easier to host than Next.js + Vercel"><meta name="twitter:image" content="https://balintkiraly.dev/og-image.png"><meta name="twitter:creator" content="@balintkiraly"><!-- LinkedIn --><meta property="linkedin:owner" content="kiralybalint"><!-- Favicon --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><!-- RSS --><link rel="alternate" type="application/rss+xml" title="balintkiraly Blog" href="/rss.xml"><!-- JSON-LD Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Bálint Király","url":"https://balintkiraly.dev","sameAs":["https://github.com/balintkiraly","https://linkedin.com/in/kiralybalint"],"headline":"Are You Overcomplicating Your Personal Site?","description":"Stop overcomplicating your personal site. Learn why static sites (and Astro in particular) are faster, simpler, and easier to host than Next.js + Vercel","image":"https://balintkiraly.dev/og-image.png","datePublished":"2026-03-25T00:00:00.000Z","author":{"@type":"Person","name":"Bálint Király"}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><script>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'dark';
+      })();
+      
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script><link rel="stylesheet" href="/_astro/about.Z9Qu2sX_.css">
+<style>.dark .astro-code{background-color:#0a0a0a!important;border:1px solid rgba(245,158,11,.2);color:#e5e5e5}.astro-code{background-color:#f5f5f5!important;border:1px solid rgba(217,119,6,.2);padding:1.25rem!important;border-radius:0;position:relative;overflow-x:auto;color:#1a1a1a}.dark .astro-code:before{content:"> code";display:block;font-size:.7rem;color:#fbbf24;border-bottom:1px solid rgba(245,158,11,.3);padding-bottom:.5rem;margin-bottom:.75rem}.astro-code:before{content:"> code";display:block;font-size:.7rem;color:#d97706;border-bottom:1px solid rgba(217,119,6,.3);padding-bottom:.5rem;margin-bottom:.75rem}.astro-code code{background:transparent!important;padding:0!important}.astro-code code:before,.astro-code code:after{content:none!important}
+</style><script type="module">document.querySelectorAll(".toc-link").forEach(e=>{e.addEventListener("click",t=>{document.querySelectorAll(".toc-link").forEach(r=>{r.classList.remove("text-amber-600","dark:text-amber-400","border-amber-500"),r.classList.add("text-neutral-600","dark:text-neutral-400","border-transparent")}),t.target.classList.remove("text-neutral-600","dark:text-neutral-400","border-transparent"),t.target.classList.add("text-amber-600","dark:text-amber-400","border-amber-500")})});const s=new IntersectionObserver(e=>{e.forEach(t=>{const r=t.target.getAttribute("id");if(t.intersectionRatio>0){document.querySelectorAll(".toc-link").forEach(o=>{o.classList.remove("text-amber-600","dark:text-amber-400","border-amber-500"),o.classList.add("text-neutral-600","dark:text-neutral-400","border-transparent")});const a=document.querySelector(`.toc-link[href="#${r}"]`);a&&(a.classList.remove("text-neutral-600","dark:text-neutral-400","border-transparent"),a.classList.add("text-amber-600","dark:text-amber-400","border-amber-500"))}})},{rootMargin:"-100px 0px -80% 0px"});document.querySelectorAll("h2[id]").forEach(e=>{s.observe(e)});
+</script></head> <body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-200 min-h-screen font-mono transition-colors duration-200"> <header class="border-b border-neutral-200 dark:border-neutral-800"> <nav class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between"> <div class="flex items-center gap-2 sm:gap-3"> <a href="/" class="text-base sm:text-lg font-bold tracking-tight"> <span class="text-amber-600 dark:text-amber-500">_</span><span>balintkiraly</span><span class="hidden sm:inline">.dev</span> </a> <span class="hidden sm:inline-block px-2 py-0.5 text-xs font-mono bg-amber-600 text-white dark:bg-amber-500 dark:text-neutral-950">Open to work</span> </div> <div class="flex items-center gap-4 sm:gap-6"> <div class="hidden sm:flex items-center gap-6 text-sm"> <a href="/" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[home]</a> <a href="/blog" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[blog]</a> <a href="/projects" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[projects]</a> <a href="/about" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[about]</a> </div> <button id="theme-toggle" class="p-1 hover:text-amber-600 dark:hover:text-amber-400 transition-colors" aria-label="Toggle theme"> <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svg> </button> <button id="mobile-menu-btn" class="sm:hidden p-1 hover:text-amber-600 dark:hover:text-amber-400 transition-colors" aria-label="Toggle menu"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </nav> <div id="mobile-menu" class="hidden sm:hidden border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950"> <div class="flex flex-col p-4 gap-4 text-sm"> <a href="/" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[home]</a> <a href="/blog" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[blog]</a> <a href="/projects" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[projects]</a> <a href="/about" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">[about]</a> </div> </div> </header> <main class="max-w-4xl mx-auto px-4 py-12">  <div class="lg:flex lg:gap-12"> <article class="lg:flex-1 min-w-0"> <header class="mb-10"> <a href="/" class="inline-flex items-center text-sm text-neutral-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-6">
+&lt;- back
+</a> <h1 class="text-2xl font-bold mb-3">Are You Overcomplicating Your Personal Site?</h1> <div class="text-neutral-600 dark:text-neutral-500 text-sm flex flex-wrap gap-4 mb-4"> <span><span class="text-amber-600 dark:text-amber-500">#</span> March 25, 2026</span> <span><span class="text-amber-600 dark:text-amber-500">~</span> 5 min read</span> </div> <div class="flex flex-wrap gap-2"> <span class="text-xs font-mono px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+#astro </span><span class="text-xs font-mono px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+#ai </span><span class="text-xs font-mono px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+#webdev </span> </div> </header> <div class="prose prose-neutral dark:prose-invert prose-neutral font-mono max-w-none 
+        prose-headings:font-bold
+        dark:prose-headings:text-neutral-200 prose-headings:text-neutral-900
+        prose-a:text-amber-600 dark:prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-500 dark:hover:prose-a:text-amber-300
+        prose-code:text-amber-600 dark:prose-code:text-amber-300 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+        dark:prose-pre:bg-neutral-900 prose-pre:bg-neutral-100 dark:prose-pre:border-amber-500/30 prose-pre:border-neutral-200 dark:prose:rounded-none prose-pre:rounded-none prose-pre:p-0 prose-pre:my-6
+        dark:prose-blockquote:border-l-amber-500 prose-blockquote:border-l-amber-600 dark:prose-blockquote:text-neutral-400 prose-blockquote:text-neutral-600
+        dark:prose-li:marker:text-amber-500 prose-li:marker:text-amber-600 dark:prose-li:text-neutral-300 prose-li:text-neutral-700
+        dark:prose-strong:text-neutral-200 prose-strong:text-neutral-800
+        dark:prose-p:text-neutral-300 prose-p:text-neutral-700
+        prose-pre:text-sm"> <p>If you’re a developer, there’s a good chance your personal site is hosted on Vercel.</p>
+<p>I did that too.</p>
+<p>Not because I needed it - just because it felt like the default.</p>
+<p>That’s the thing: modern web dev runs on “stack by habit”. This lately means Next.js + Vercel..
+even when all you need is a static page.</p>
+<p>Don’t get me wrong, Vercel and Next.js are great. Seriously.</p>
+<p>But for a personal site (a blog, a portfolio) it’s often solving problems you don’t have:</p>
+<ul>
+<li>server-side rendering</li>
+<li>edge functions</li>
+<li>dynamic APIs</li>
+</ul>
+<p>If your site is mostly content, updates once a month, you don’t need a server.</p>
+<div class="my-6 p-4 text-lg border-l-4 border-amber-400 bg-transparent text-center"> <p class="text-neutral-700 dark:text-neutral-300 font-mono"> You don’t need a server<br/><br/>You just need to serve files. </p> </div>
+<h2 id="static-sites-are-enough-and-often-better">Static Sites Are Enough (and often better)</h2>
+<p>Remember when static HTML files with a bit of CSS was all you needed?</p>
+<p>Today, with all the tools we have, it’s easy to lose that mindset.
+We tend to overcomplicate things and spend hours to optimize problems that should not exists.</p>
+<div class="my-6 p-4 text-lg border-l-4 border-amber-400 bg-transparent text-center"> <p class="text-neutral-700 dark:text-neutral-300 font-mono"> <strong>Simplicity works</strong>. </p> </div>
+<p>If you go with a static you’ve got a few solid options, from minimal tools to full frameworks.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Best For</th></tr></thead><tbody><tr><td><strong>Astro</strong></td><td>Content-focused sites with minimal JavaScript by default</td></tr><tr><td><strong>Hugo</strong></td><td>Blazing fast static sites, no JavaScript needed</td></tr><tr><td><strong>Jekyll</strong></td><td>The original GitHub Pages static site generator</td></tr><tr><td><strong>Gatsby</strong></td><td>React-based static sites with plugins</td></tr><tr><td><strong>11ty</strong></td><td>Simple, flexible static site generator</td></tr><tr><td><strong>Next.js</strong></td><td>Full-featured React apps with SSR</td></tr><tr><td><strong>SvelteKit</strong></td><td>If you prefer Svelte’s syntax</td></tr><tr><td><strong>WordPress</strong></td><td>If you really want zero code</td></tr></tbody></table>
+<p>Most of these will generate static files.
+Some will try to do a lot more.</p>
+<p>For a personal site, you probably don’t need the “more”.</p>
+<h2 id="why-astro">Why Astro?</h2>
+<p>Astro builds your site into plain HTML files. No server, no database, no runtime. Your site loads instantly from a CDN.</p>
+<p>The “zero JavaScript by default” approach means your site works without JavaScript, scores great on performance metrics, and is cheap to host.</p>
+<p>I chose Astro over other options for good reasons:</p>
+<ul>
+<li>
+<p><strong>Content Collections</strong></p>
+<p>Type-safe markdown/mdx for blog posts and projects</p>
+</li>
+<li>
+<p><strong>Islands Architecture</strong></p>
+<p>Only ship JavaScript when you need it</p>
+</li>
+<li>
+<p><strong>Great Developer Experience</strong></p>
+<p>Hot reload, built-in routing, great TypeScript support</p>
+</li>
+<li>
+<p><strong>Flexible</strong></p>
+<p>Works with React, Vue, Svelte if you need interactivity</p>
+</li>
+<li>
+<p><strong>Fast</strong></p>
+<p>Consistently scores 100 on Lighthouse performance</p>
+</li>
+<li>
+<p><strong>Dev Toolbar</strong></p>
+<p>Built-in debugging, audit, and performance tools</p>
+</li>
+</ul>
+<h3 id="the-dev-toolbar">The Dev Toolbar</h3>
+<p>Astro comes with a game-changing Dev Toolbar - a floating panel that appears when you run <code>pnpm dev</code>:</p>
+<ul>
+<li>
+<p><strong>Audit</strong></p>
+<p>Automatically checks for accessibility, SEO, and performance issues</p>
+</li>
+<li>
+<p><strong>Inspect</strong></p>
+<p>Click any element to see its Astro component source</p>
+</li>
+</ul>
+<p>It’s like having Chrome DevTools built specifically for Astro. No setup required - it just works.</p>
+<figure class="my-8"> <img src="/posts/astro-dev-toolbar.png" alt="Astro Dev Toolbar showing an image optimization audit" class="mx-auto rounded-lg shadow-lg w-full max-w-2xl border border-neutral-200 dark:border-neutral-700"> <figcaption class="text-center text-sm text-neutral-500 dark:text-neutral-400 mt-3 font-mono"> The Dev Toolbar caught an image that could be optimized - no setup required </figcaption> </figure>
+<h3 id="why-astro-beats-the-alternatives">Why Astro beats the alternatives</h3>
+<p><strong>vs Next.js</strong>: Astro ships zero JavaScript by default. Next.js sends React to the client even for static pages. For a blog or portfolio, that’s overkill.</p>
+<p><strong>vs Hugo</strong>: Hugo is incredibly fast but uses Go templates which most developers don’t know. Astro uses familiar HTML/CSS/JS patterns and TypeScript.</p>
+<p><strong>vs Jekyll</strong>: Jekyll is simple and GitHub-friendly, but Astro brings modern tooling, TypeScript support, and active development to static sites.</p>
+<p><strong>vs 11ty</strong>: 11ty is flexible but requires more setup for common features. Astro gives you routing, image optimization, and content collections out of the box.</p>
+<p><strong>vs Gatsby</strong>: Gatsby relies heavily on GraphQL and has become bloated. Astro is simpler and faster.</p>
+<p>For a content-focused site like a blog or portfolio, Astro hits the sweet spot: modern developer experience, excellent performance, and just enough flexibility.</p>
+<h3 id="hosting-options">Hosting Options</h3>
+<ul>
+<li><strong>GitHub Pages</strong> - Zero cost, instant deploys from your repo</li>
+<li><strong>Cloudflare Pages</strong> - Free tier with global CDN, great performance</li>
+<li><strong>AWS S3 + CloudFront</strong> - Pay per use, rock-solid reliability, free tier is generous</li>
+<li><strong>VPS</strong> - Can serve hundereds of static sites, but requires more maintenance and reliability considerations</li>
+</ul>
+<p>For most personal sites, GitHub Pages or Cloudflare Pages is plenty. AWS S3 is free for the first year and has excellent free tier after that. But if you want to learn and have time for maintenence go with a VPS.</p>
+<h2 id="what-you-get">What You Get</h2>
+<p>Static sites give you:</p>
+<ul>
+<li><strong>Performance</strong> - CDN-hosted, instant loads globally</li>
+<li><strong>Control</strong> - Every line of code is yours</li>
+<li><strong>Flexibility</strong> - No platform lock-in, migrate anytime</li>
+<li><strong>Learning</strong> - Every change teaches you something</li>
+<li><strong>Simplicity</strong> - No database, no server management, just files</li>
+</ul>
+<h2 id="is-this-for-you">Is This for You?</h2>
+<p>This approach works if you want:</p>
+<ul>
+<li>Full control over your code</li>
+<li>Don’t mind to use mdx and git for new content</li>
+<li>A fast, modern site</li>
+</ul>
+<p>It might not be for you if you want zero maintenance or don’t care about customization.</p>
+<h2 id="try-it">Try It</h2>
+<p>Next time you start a personal project, don’t reach for the default stack immediately. Start with something simpler. You might realize you never needed the complexity in the first place.</p>
+<p>Check out the source code of this page on <a href="https://github.com/balintkiraly/balintkiraly.dev">GitHub</a> to see how simple it really is.</p> </div> <nav class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800"> <div class="grid md:grid-cols-2 gap-4"> <a href="/blog/placeholder" class="group p-4 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500/50 transition-colors"> <span class="text-xs text-neutral-500">&lt;- prev</span> <h3 class="text-sm font-semibold mt-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Placeholder</h3> </a>  </div> </nav> </article> <aside class="hidden lg:block w-56 shrink-0"> <nav class="sticky top-8"> <h2 class="text-xs font-bold mb-4 text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">On this page</h2> <ul class="space-y-0 border-l border-neutral-200 dark:border-neutral-800"> <li> <a href="#static-sites-are-enough-and-often-better" class="toc-link block py-2 pl-4 text-sm text-neutral-600 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 border-l-2 border-transparent -ml-[2px] transition-colors duration-200" data-toc-link> Static Sites Are Enough (and often better) </a> </li><li> <a href="#why-astro" class="toc-link block py-2 pl-4 text-sm text-neutral-600 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 border-l-2 border-transparent -ml-[2px] transition-colors duration-200" data-toc-link> Why Astro? </a> </li><li> <a href="#what-you-get" class="toc-link block py-2 pl-4 text-sm text-neutral-600 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 border-l-2 border-transparent -ml-[2px] transition-colors duration-200" data-toc-link> What You Get </a> </li><li> <a href="#is-this-for-you" class="toc-link block py-2 pl-4 text-sm text-neutral-600 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 border-l-2 border-transparent -ml-[2px] transition-colors duration-200" data-toc-link> Is This for You? </a> </li><li> <a href="#try-it" class="toc-link block py-2 pl-4 text-sm text-neutral-600 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 border-l-2 border-transparent -ml-[2px] transition-colors duration-200" data-toc-link> Try It </a> </li> </ul> </nav> </aside> </div>    </main> <footer class="border-t border-neutral-200 dark:border-neutral-800"> <div class="max-w-3xl mx-auto px-4 py-6 text-center"> <div class="flex justify-center gap-6 mb-4"> <a href="https://github.com/balintkiraly" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path> </svg> </a> <a href="https://linkedin.com/in/kiralybalint" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path> </svg> </a> <a href="mailto:hello@balintkiraly.dev" class="text-neutral-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors" aria-label="Email"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </a> </div> <p class="text-neutral-500 dark:text-neutral-600 text-xs">&copy; 2026 -- built with astro</p> </div> </footer> <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('theme-toggle');
+        
+        toggle?.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        });
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isHidden = mobileMenu.style.display === 'none' || mobileMenu.style.display === '';
+            mobileMenu.style.display = isHidden ? 'block' : 'none';
+          });
+        }
+      });
+    </script> </body> </html>  
