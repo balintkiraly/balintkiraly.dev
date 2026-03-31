@@ -21,6 +21,9 @@ const siteUrl = "https://balintkiraly.dev";
 const fullTitle = title === "My Blog" ? "balintkiraly" : `${title} | balintkiraly`;
 const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
+
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? "6b4b321d-4e32-43be-9e8b-aa18afb4a022";
+const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL ?? "https://cloud.umami.is/script.js";
 ---
 
 <!doctype html>
@@ -108,6 +111,8 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
         document.documentElement.classList.add('dark');
       }
     </script>
+
+    <script defer src={umamiScriptUrl} data-website-id={umamiWebsiteId} />
   </head>
   <body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-200 min-h-screen font-mono transition-colors duration-200">
     <header class="border-b border-neutral-200 dark:border-neutral-800">
